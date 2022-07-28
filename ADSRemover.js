@@ -13,7 +13,7 @@
 // @include      /maxjav.com/
 // @include      /t66y.com/
 // @include      /filecrypt.cc/
-// @include      /(kav.today|mybj)/
+// @include      /(kav.today|mybj|vipbj)/
 // @include      /(cosplayjav.pl|gomoviz.org)/
 // @include      https://xnxx*.com/*
 // @include      *://pornobunny.org/*.html
@@ -72,7 +72,9 @@ switch (RootDomain) {
     case "mybj.best":
     case "mybj.buzz":
     case "mybj.xyz":
-        ADTag = ['figure.wp-block-image:not(.size-full) a img']
+    case "vipbj.club":
+    case "vipbj.online":
+        ADTag = ['figure.wp-block-image:not(.size-large) a img']
         break;
     default:
         ADTag = ['.top-banner', '.mobile-banner:not[.top_hr]', 'script[src*="ethecountryw"]', '#popmagicldr', 'iframe[src*="about:blank"]']
@@ -126,7 +128,7 @@ function ADRemover(node) {
         }
     }
     else if (/spotv\d+\.com/.test(window.location.href)) {
-        ADLink = node.querySelectorAll('a[href*="batoon"], a[href*="wn-xg.com"], a[href*="wb-tt.com"], a[href*="xn--"], .popups')
+        ADLink = node.querySelectorAll('a[href*="batoon"], a[href*="wn-xg.com"], a[href*="wb-tt.com"], a[href*="xn--"], a[href*="machuja-987.com"], .popups')
         console.log(ADLink)
         if(ADLink){
             ADLink.forEach(function (item) {
@@ -134,14 +136,15 @@ function ADRemover(node) {
             })
         }
     }
-    else if (/kav.today|mybj/.test(window.location.href)) {
-        ADLink = node.querySelectorAll('figure.wp-block-image:not(.size-full) a')
+    else if (/kav.today|mybj|vipbj/.test(window.location.href)) {
+        ADLink = node.querySelectorAll('figure.wp-block-image:not(.size-large) a')
+        console.log(ADLink)
         ADLink.forEach(function (item) {
             item.innerText = 'Download'
         })
     }
-    else if (/eyny\.com\/forum\.php\?mod=viewthread/.test(window.location.href)) {
-        var MouseOver = node.querySelectorAll('img.zoom')
+    else if (/eyny\.com\/forum\.php\?mod=viewthread|eyny\.com\/thread.*\.html/.test(window.location.href)) {
+        var MouseOver = node.querySelectorAll('img.zoom, span#visitedforums')
         if(MouseOver){
             MouseOver.forEach(function (item) {
                 item.removeAttribute('onmouseover')
