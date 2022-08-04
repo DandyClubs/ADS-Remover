@@ -20,6 +20,7 @@
 // @include      https://namu.wiki/w/*
 // @include      https://arcjav.com/*
 // @include      https://javpink.com/*
+// @include      /hpjav\.tv/
 // @include      https://cineaste.co.kr/bbs/board.php*
 // @include      /spotv\d+\.com/
 // @include      /toonkor\d+\.com/
@@ -128,7 +129,7 @@ function ADRemover(node) {
         }
     }
     else if (/spotv\d+\.com/.test(window.location.href)) {
-        ADLink = node.querySelectorAll('a[href*="batoon"], a[href*="wn-xg.com"], a[href*="wb-tt.com"], a[href*="xn--"], a[href*="machuja-987.com"], .popups')
+        ADLink = node.querySelectorAll('div.homelist-wrap > #free-genre-list > li > a[href^="http"], .popups')
         console.log(ADLink)
         if(ADLink){
             ADLink.forEach(function (item) {
@@ -168,14 +169,21 @@ function ADRemover(node) {
         }
     }
 
-    if(ADTag){
-        ADTag.forEach(function (item) {
-            var removeDoms = node.querySelectorAll(item)
-            removeDoms.forEach(function (removeDom) {
-                console.log('Remove Element: ', removeDom)
-                removeDom.remove()
+    else if (/hpjav\.tv/.test(window.location.href)) {
+        ADLink = document.querySelector('video#vplayer')
+        if(ADLink){
+            ADLink.closest('div').remove()
+        }
+
+        if(ADTag){
+            ADTag.forEach(function (item) {
+                var removeDoms = node.querySelectorAll(item)
+                removeDoms.forEach(function (removeDom) {
+                    console.log('Remove Element: ', removeDom)
+                    removeDom.remove()
+                })
             })
-        })
+        }
     }
 }
 
