@@ -128,7 +128,7 @@ function ADRemover(node) {
         }
     }
     else if (/spotv\d+\.com/.test(window.location.href)) {
-        ADLink = node.querySelectorAll('a[href*="batoon"], a[href*="wn-xg.com"], a[href*="wb-tt.com"], a[href*="xn--"], a[href*="machuja-987.com"], .popups')
+        ADLink = node.querySelectorAll('a[href^="http"], .popups')
         console.log(ADLink)
         if(ADLink){
             ADLink.forEach(function (item) {
