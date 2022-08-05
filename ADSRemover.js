@@ -85,8 +85,9 @@ switch (RootDomain) {
 }
 
 function ADChange() {
+    let scripts
     if (/avjamak/.test(window.location.href) && window.top === window.self) {
-        let scripts = document.querySelectorAll('script')
+        scripts = document.querySelectorAll('script')
         for (let i = 0; scripts.length; i++) {
             if(scripts[i].outerHTML.includes('window.document.getElementById("h237")')){
                 scripts[i].remove()
@@ -95,13 +96,20 @@ function ADChange() {
         }
     }
     else if (/t66y.com/.test(window.location.href) && window.top === window.self) {
-        let scripts = document.querySelectorAll('script')
+        scripts = document.querySelectorAll('script')
         for (let i = 0; scripts.length; i++) {
             if(scripts[i].outerHTML.includes('var charset=')){
                 console.log( scripts[i])
                 scripts[i].remove()
                 break
             }
+        }
+    }
+    else {
+        scripts = document.querySelectorAll('script#popmagicldr')
+        for (let i = 0; scripts.length; i++) {
+            console.log( scripts[i])
+            scripts[i].remove()
         }
     }
 }
@@ -129,11 +137,7 @@ function ADRemover(node) {
         }
     }
     else if (/spotv\d+\.com/.test(window.location.href)) {
-<<<<<<< HEAD
         ADLink = node.querySelectorAll('div.homelist-wrap > #free-genre-list > li > a[href^="http"], .popups')
-=======
-        ADLink = node.querySelectorAll('a[href^="http"], .popups')
->>>>>>> b346f0942d856f52ad7a1743aee5c18443348d0c
         console.log(ADLink)
         if(ADLink){
             ADLink.forEach(function (item) {
